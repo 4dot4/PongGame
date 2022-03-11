@@ -10,7 +10,7 @@ int main( int argc, char* args[] )
 	//The window we'll be rendering to
 	SDL_Window* window = NULL;
 	
-	//The surface contained by the window
+	//The surface contained by the window n
 	SDL_Surface* screenSurface = NULL;
 
 	//Initialize SDL
