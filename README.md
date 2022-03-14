@@ -1,2 +1,2 @@
-# sdl_base
-a basic sdl base to run your projects
+# Classical pong game 
+Using c and sdl
