@@ -1,4 +1,4 @@
 *.exe
 *.dll
-D:\code\c\pong\src\
-D:\code\c\pong\.vscode
+src/
+.vscode/
