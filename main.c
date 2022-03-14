@@ -30,6 +30,7 @@ void pysic(SDL_Rect* player, SDL_Rect* ball,SDL_Rect* bot,bool* gravity,bool* di
     }
 }
 void render(SDL_Rect* player, SDL_Rect* ball,SDL_Rect* bot,SDL_Renderer* renderer){
+    
         SDL_SetRenderDrawColor(renderer,0,0,0,0);
         SDL_RenderClear(renderer);
 
