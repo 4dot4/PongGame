@@ -2,22 +2,26 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include <math.h>
+
 
 void pysic(SDL_Rect* player, SDL_Rect* ball,SDL_Rect* bot,bool* gravity,bool* direction){
     if(ball->y + ball->h >= 800)
         *gravity = false;
     else if(ball->y <= 0)
         *gravity = true;
+
     if(*gravity){
         ball->y += 5;
     }else{
         ball->y -= 5;
     }
-    if(ball->x <= 0)
+
+
+    if(ball->x <= player->x + player->w && ball->y - ball->h >= player->y && ball->y <= player->y + player->h)
         *direction = false;
-    else if(ball->x + ball->w >= 800)
+    else if(ball->x + ball->w >= bot->x && ball->y - ball->h >= bot->y && ball->y <= bot->y + bot->h)
         *direction = true;
+
     if(*direction){
         ball->x -= 3;
     }else{
@@ -34,11 +38,12 @@ void render(SDL_Rect* player, SDL_Rect* ball,SDL_Rect* bot,SDL_Renderer* rendere
 
         SDL_SetRenderDrawColor(renderer,0,0,255,255);
         SDL_RenderDrawRect(renderer,bot);
-        
+
         SDL_SetRenderDrawColor(renderer,255,255,255,255);
         SDL_RenderDrawRect(renderer,ball);
+        
         SDL_RenderPresent(renderer);
-        SDL_Delay(100);
+        SDL_Delay(50);
 }
 
 int main(int argc,char** argv){
@@ -82,6 +87,16 @@ int main(int argc,char** argv){
             if(state[SDL_SCANCODE_S]){
                 if(player.y + player.h < 800){
                     player.y += 10;
+                }
+            }
+            if(state[SDL_SCANCODE_UP]){
+                if(bot.y > 0){
+                    bot.y -= 10;
+                }
+            }
+            if(state[SDL_SCANCODE_DOWN]){
+                if(bot.y + bot.h < 800){
+                    bot.y += 10;
                 }
             }
             
